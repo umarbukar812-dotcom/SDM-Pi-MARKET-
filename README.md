@@ -33,7 +33,7 @@ button{background:#25D366;color:white;border:none;padding:10px;width:100%;border
 </div>
 
 <div class="card">
-<img src="https://images.unsplash.com/photo-1586201375761-83865001e31c?w=400">
+<img src="[?](https://www.osiafrik.com/cdn/shop/products/image_64d5a541-551d-4e8a-95d5-a35d8c2df3e2_1024x1024.jpg?v=1630667997)w=400">
 <h3>Rice 5kg</h3>
 <p class="price">1 Pi</p>
 <a href="https://wa.me/2348000000000?text=Hello%20SDM%20I%20want%20to%20buy%20Rice%20with%20Pi"><button>Buy With Pi 🟣</button></a>
@@ -47,14 +47,14 @@ button{background:#25D366;color:white;border:none;padding:10px;width:100%;border
 </div>
 
 <div class="card">
-<img src="https://images.unsplash.com/photo-1585032226651-759b368d7246?w=400">
+<img src="[?](https://www.nigerianstore.com/cdn/shop/products/Maggi_Seasoning.jpg?v=1571718941&width=458)?w=400">
 <h3>Maggi Cubes</h3>
 <p class="price">0.1 Pi</p>
 <a href="https://wa.me/2348000000000?text=Hello%20SDM%20I%20want%20to%20buy%20Maggi%20with%20Pi"><button>Buy With Pi 🟣</button></a>
 </div>
 
 <div class="card">
-<img src="https://images.unsplash.com/photo-1626074353765-517a681e40be?w=400">
+<img src="https://images.jdmagicbox.com/comp/jalgaon/p3/9999px257.x257.100417153326.h4p3/catalogue/winley-polymers-pvt-ltd-jalgaon-midc-jalgaon-pet-bottle-manufacturers-ybvv4crp48.jpg?w=400">
 <h3>Groundnut Oil</h3>
 <p class="price">0.6 Pi</p>
 <a href="https://wa.me/2348000000000?text=Hello%20SDM%20I%20want%20to%20buy%20Groundnut%20Oil%20with%20Pi"><button>Buy With Pi 🟣</button></a>
