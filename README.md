@@ -40,7 +40,7 @@ button{background:#25D366;color:white;border:none;padding:10px;width:100%;border
 </div>
 
 <div class="card">
-<img src="https://testing.d15f5qm34g978d.amplifyapp.com/_next/static/media/beans.4f8dd050.png">
+<img src="https://images.unsplash.com/photo-1585996483592-8a5d7f1b1e3a?w=400">
 <h3>Beans 5kg</h3>
 <p class="price">0.8 Pi</p>
 <a href="https://wa.me/2348000000000?text=Hello%20SDM%20I%20want%20to%20buy%20Beans%20with%20Pi"><button>Buy With Pi 🟣</button></a>
