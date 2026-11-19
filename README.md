@@ -47,7 +47,7 @@ button{background:#25D366;color:white;border:none;padding:10px;width:100%;border
 </div>
 
 <div class="card">
-<img src="[?](https://www.nigerianstore.com/cdn/shop/products/Maggi_Seasoning.jpg?v=1571718941&width=458)?w=400">
+<img src="[?](https://www.nigerianstore.com/cdn/shop/products/Maggi_Seasoning.jpg?v=1571718941&width=458)w=400">
 <h3>Maggi Cubes</h3>
 <p class="price">0.1 Pi</p>
 <a href="https://wa.me/2348000000000?text=Hello%20SDM%20I%20want%20to%20buy%20Maggi%20with%20Pi"><button>Buy With Pi 🟣</button></a>
