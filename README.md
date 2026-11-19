@@ -26,35 +26,35 @@ button{background:#25D366;color:white;border:none;padding:10px;width:100%;border
 
 <div class="grid">
 <div class="card">
-<img src="https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?w=400">
+<img src="http://www.osiafrik.com/cdn/shop/products/image_64d5a541-551d-4e8a-95d5-a35d8c2df3e2_1024x1024.jpg?v=1630667997">
 <h3>Palm Oil 1 Litre</h3>
 <p class="price">0.5 Pi</p>
 <a href="https://wa.me/2348000000000?text=Hello%20SDM%20I%20want%20to%20buy%20Palm%20Oil%20with%20Pi"><button>Buy With Pi 🟣</button></a>
 </div>
 
 <div class="card">
-<img src="[?](https://www.osiafrik.com/cdn/shop/products/image_64d5a541-551d-4e8a-95d5-a35d8c2df3e2_1024x1024.jpg?v=1630667997)w=400">
+<img src="https://gonavest.com/assets/rice-K2X2vmP5.png">
 <h3>Rice 5kg</h3>
 <p class="price">1 Pi</p>
 <a href="https://wa.me/2348000000000?text=Hello%20SDM%20I%20want%20to%20buy%20Rice%20with%20Pi"><button>Buy With Pi 🟣</button></a>
 </div>
 
 <div class="card">
-<img src="https://images.unsplash.com/photo-1585996483592-8a5d7f1b1e3a?w=400">
+<img src="https://testing.d15f5qm34g978d.amplifyapp.com/_next/static/media/beans.4f8dd050.png">
 <h3>Beans 5kg</h3>
 <p class="price">0.8 Pi</p>
 <a href="https://wa.me/2348000000000?text=Hello%20SDM%20I%20want%20to%20buy%20Beans%20with%20Pi"><button>Buy With Pi 🟣</button></a>
 </div>
 
 <div class="card">
-<img src="[?](https://www.nigerianstore.com/cdn/shop/products/Maggi_Seasoning.jpg?v=1571718941&width=458)w=400">
+<img src="https://africangoodsmarket.shop/cdn/shop/files/MaggiStarSeasoning2.jpg?v=1713884220&width=713">
 <h3>Maggi Cubes</h3>
 <p class="price">0.1 Pi</p>
 <a href="https://wa.me/2348000000000?text=Hello%20SDM%20I%20want%20to%20buy%20Maggi%20with%20Pi"><button>Buy With Pi 🟣</button></a>
 </div>
 
 <div class="card">
-<img src="https://images.jdmagicbox.com/comp/jalgaon/p3/9999px257.x257.100417153326.h4p3/catalogue/winley-polymers-pvt-ltd-jalgaon-midc-jalgaon-pet-bottle-manufacturers-ybvv4crp48.jpg?w=400">
+<img src="https://images.jdmagicbox.com/comp/jalgaon/p3/9999px257.x257.100417153326.h4p3/catalogue/winley-polymers-pvt-ltd-jalgaon-midc-jalgaon-pet-bottle-manufacturers-ybvv4crp48.jpg">
 <h3>Groundnut Oil</h3>
 <p class="price">0.6 Pi</p>
 <a href="https://wa.me/2348000000000?text=Hello%20SDM%20I%20want%20to%20buy%20Groundnut%20Oil%20with%20Pi"><button>Buy With Pi 🟣</button></a>
