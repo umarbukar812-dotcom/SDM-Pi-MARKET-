@@ -1,3 +1,4 @@
+
 <html>
 <head>
 <meta charset="UTF-8">
@@ -12,11 +13,10 @@ header h1{margin:0}
 #search{width:100%;padding:12px;border-radius:10px;border:1px solid #ccc;font-size:16px;margin:10px 0;box-sizing:border-box}
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .card{background:white;padding:12px;border-radius:12px;text-align:center;box-shadow:0 2px 5px rgba(0,0,0,0.1)}
-.card img{width:100%;height:100px;object-fit:cover;border-radius:10px;background:#eee}
+.card img{width:100%;height:110px;object-fit:cover;border-radius:10px;background:#eee}
 .card h3{margin:8px 0 2px;font-size:16px}
 .price{color:#6a1b9a;font-weight:bold;margin:5px 0}
 .addBtn{background:#FFD700;border:none;padding:10px;width:100%;border-radius:10px;font-weight:bold;font-size:15px;cursor:pointer}
-.addBtn:active{background:#FFC107}
 .payBtn{background:#6a1b9a;color:white;border:none;padding:15px;width:100%;border-radius:12px;font-weight:bold;font-size:17px;margin-top:10px}
 .cartBox{background:white;padding:12px;border-radius:12px;margin-top:12px}
 .cartItem{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #eee}
@@ -64,7 +64,7 @@ header h1{margin:0}
 </div>
 
 <div class="card product">
-<img src="https://images.unsplash.com/photo-1581441363689-1f3c3c414635?w=400" alt="Sugar">
+<img src="https://images.unsplash.com/photo-1622480916113-9000ac49b79d?w=400" alt="Sugar">
 <h3>Sugar</h3>
 <p>1 Bag - Dangote Sugar</p>
 <div class="price">5 Pi</div>
@@ -72,7 +72,7 @@ header h1{margin:0}
 </div>
 
 <div class="card product">
-<img src="https://images.unsplash.com/photo-1588964895597-cfccd6e2dbf9?w=400" alt="Garri">
+<img src="https://i.pinimg.com/736x/cd/c0/c3/cdc0c37c859a3f87210dc77406e7850f.jpg" alt="Garri">
 <h3>Garri</h3>
 <p>1 Paint - Ijebu Garri</p>
 <div class="price">6 Pi</div>
@@ -80,11 +80,11 @@ header h1{margin:0}
 </div>
 
 <div class="card product">
-<img src="https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=400" alt="Spices">
-<h3>Spices / Maggi</h3>
-<p>1 Pack - Seasoning</p>
+<img src="https://www.nigerianstore.com/cdn/shop/products/Maggi_Seasoning.jpg?v=1571718941&width=458" alt="Maggi">
+<h3>Maggi Cubes</h3>
+<p>1 Pack - Maggi Seasoning</p>
 <div class="price">3 Pi</div>
-<button class="addBtn" onclick="addToCart('Spices',3)">➕ ADD TO BASKET</button>
+<button class="addBtn" onclick="addToCart('Maggi Cubes',3)">➕ ADD TO BASKET</button>
 </div>
 
 </div>
@@ -98,7 +98,6 @@ header h1{margin:0}
 
 <script>
 let cart = [];
-
 function searchProduct(){
   let q = document.getElementById('search').value.toLowerCase();
   let items = document.getElementsByClassName('product');
@@ -107,22 +106,15 @@ function searchProduct(){
     if(name.includes(q)){ items[i].style.display='block'; } else { items[i].style.display='none'; }
   }
 }
-
 function addToCart(name, price){
   cart.push({name:name, price:price});
   updateBasket();
   alert(name + " added to Basket! 🧺");
 }
-
-function removeItem(index){
-  cart.splice(index,1);
-  updateBasket();
-}
-
+function removeItem(index){ cart.splice(index,1); updateBasket(); }
 function updateBasket(){
   document.getElementById('basketCount').innerText = cart.length;
-  let total = 0;
-  let html = "";
+  let total = 0; let html = "";
   if(cart.length==0){ html = "<p style='color:#888'>Basket is empty. Tap ADD TO BASKET!</p>"; }
   cart.forEach((item, i)=>{
     total += item.price;
@@ -131,11 +123,9 @@ function updateBasket(){
   document.getElementById('cartList').innerHTML = html;
   document.getElementById('totalPi').innerText = total;
 }
-
 function payWithPi(){
   if(cart.length==0){ alert("Basket is empty! Add product first!"); return; }
-  let total = 0;
-  cart.forEach(i=> total += i.price);
+  let total = 0; cart.forEach(i=> total += i.price);
   document.getElementById('status').innerText = "Connecting to Pi... Please wait...";
   try{
     Pi.init({version:"2.0", sandbox:true});
