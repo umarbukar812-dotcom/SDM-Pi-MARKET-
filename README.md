@@ -1,4 +1,3 @@
-
 <html>
 <head>
 <meta charset="UTF-8">
@@ -18,9 +17,11 @@ header h1{margin:0}
 .price{color:#6a1b9a;font-weight:bold;margin:5px 0}
 .addBtn{background:#FFD700;border:none;padding:10px;width:100%;border-radius:10px;font-weight:bold;font-size:15px;cursor:pointer}
 .payBtn{background:#6a1b9a;color:white;border:none;padding:15px;width:100%;border-radius:12px;font-weight:bold;font-size:17px;margin-top:10px}
+.waBtn{background:#25D366;color:white;border:none;padding:15px;width:100%;border-radius:12px;font-weight:bold;font-size:17px;margin-top:10px}
 .cartBox{background:white;padding:12px;border-radius:12px;margin-top:12px}
 .cartItem{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #eee}
 .removeBtn{background:red;color:white;border:none;padding:5px 10px;border-radius:5px}
+input{width:100%;padding:12px;margin:5px 0;border-radius:10px;border:1px solid #ccc;box-sizing:border-box}
 </style>
 </head>
 <body>
@@ -92,9 +93,13 @@ header h1{margin:0}
 <div class="cartBox">
 <h3>🧺 Your Basket</h3>
 <div id="cartList"><p style="color:#888">Basket is empty. Tap ADD TO BASKET!</p></div>
-<button class="payBtn" onclick="payWithPi()">💜 PAY WITH PI</button>
+<input id="custName" placeholder="Your Name">
+<input id="custPhone" placeholder="Your Phone / WhatsApp Number">
+<input id="custAddress" placeholder="Your Address in Maiduguri">
+<button class="payBtn" onclick="payWithPi()">💜 CHECKOUT WITH PI</button>
+<button class="waBtn" onclick="orderWhatsApp()">💬 SEND ORDER ON WHATSAPP</button>
 <p id="status" style="text-align:center;color:#6a1b9a;font-weight:bold"></p>
-<p style="text-align:center;color:#555">📍 Location: Maiduguri, Borno State</p>
+<p style="text-align:center;color:#555">📍 Location: Maiduguri, Borno State<br>📞 WhatsApp: 09047428383</p>
 </div>
 
 <script>
@@ -124,32 +129,25 @@ function updateBasket(){
   document.getElementById('cartList').innerHTML = html;
   document.getElementById('totalPi').innerText = total;
 }
+function getTotal(){ let t=0; cart.forEach(i=> t+=i.price); return t; }
 function payWithPi(){
   if(cart.length==0){ alert("Basket is empty! Add product first!"); return; }
-  let total = 0; cart.forEach(i=> total += i.price);
-  document.getElementById('status').innerText = "Connecting to Pi... Please wait...";
-  try{
-    Pi.init({version:"2.0", sandbox:true});
-    Pi.authenticate(['username','payments'], function(auth){
-      Pi.createPayment({
-        amount: total,
-        memo: "SDM Pi Market Order - " + cart.map(i=>i.name).join(", "),
-        metadata: {order: cart}
-      }, {
-        onReadyForServerApproval: function(paymentId){ console.log(paymentId); },
-        onReadyForServerCompletion: function(paymentId, txid){ 
-          document.getElementById('status').innerText = "✅ Payment Success! Thank you!";
-          alert("Payment Success! Thank you!");
-          cart = []; updateBasket();
-        },
-        onCancel: function(){ document.getElementById('status').innerText = "Payment Cancelled"; },
-        onError: function(e){ document.getElementById('status').innerText = "Error: " + e; }
-      });
-    });
-  }catch(e){
-    document.getElementById('status').innerText = "Open in Pi Browser to Pay! Error: " + e;
-    alert("Please open this shop inside Pi Browser!");
-  }
+  let total = getTotal();
+  let name = document.getElementById('custName').value;
+  let phone = document.getElementById('custPhone').value;
+  let addr = document.getElementById('custAddress').value;
+  if(!name || !phone){ alert("Please enter your Name and Phone first!"); return; }
+  document.getElementById('status').innerText = "✅ Order Ready! Total: " + total + " Pi. Please send on WhatsApp below, then pay with Pi Wallet to SDM Market!";
+  alert("Order Ready!\n\n" + cart.map(i=>i.name + " - " + i.price + " Pi").join("\n") + "\n\nTotal: " + total + " Pi\nName: " + name + "\nPhone: " + phone + "\nAddress: " + addr + "\n\nNow tap SEND ORDER ON WHATSAPP!");
+}
+function orderWhatsApp(){
+  if(cart.length==0){ alert("Basket is empty!"); return; }
+  let total = getTotal();
+  let name = document.getElementById('custName').value || "Customer";
+  let phone = document.getElementById('custPhone').value || "";
+  let addr = document.getElementById('custAddress').value || "";
+  let msg = "Hello SDM Pi Market! I want to order:%0A%0A" + cart.map(i=> "- " + i.name + " - " + i.price + " Pi").join("%0A") + "%0A%0ATotal: " + total + " Pi%0AName: " + name + "%0APhone: " + phone + "%0AAddress: " + addr + "%0A%0A I will pay with Pi!";
+  window.open("https://wa.me/2349047428383?text=" + msg, "_blank");
 }
 </script>
 </body>
