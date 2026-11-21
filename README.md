@@ -27,7 +27,7 @@ header h1{margin:0}
 
 <header>
 <h1>🛒 SDM Pi Market</h1>
-<p>Buy With Pi - Fast Delivery in Lagos</p>
+<p>Buy With Pi - Fast Delivery in Maiduguri, Borno State</p>
 </header>
 
 <div class="basket-bar">
@@ -64,7 +64,7 @@ header h1{margin:0}
 </div>
 
 <div class="card product">
-<img src="https://images.unsplash.com/photo-1622480916113-9000ac49b79d?w=400" alt="Sugar">
+<img src="https://sugar.dangote.com/wp-content/uploads/2021/06/products_list-non2.jpg" alt="Sugar">
 <h3>Sugar</h3>
 <p>1 Bag - Dangote Sugar</p>
 <div class="price">5 Pi</div>
@@ -94,6 +94,7 @@ header h1{margin:0}
 <div id="cartList"><p style="color:#888">Basket is empty. Tap ADD TO BASKET!</p></div>
 <button class="payBtn" onclick="payWithPi()">💜 PAY WITH PI</button>
 <p id="status" style="text-align:center;color:#6a1b9a;font-weight:bold"></p>
+<p style="text-align:center;color:#555">📍 Location: Maiduguri, Borno State</p>
 </div>
 
 <script>
