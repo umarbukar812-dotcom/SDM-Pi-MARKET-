@@ -22,6 +22,7 @@ header h1{margin:0}
 .cartItem{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #eee}
 .removeBtn{background:red;color:white;border:none;padding:5px 10px;border-radius:5px}
 input{width:100%;padding:12px;margin:5px 0;border-radius:10px;border:1px solid #ccc;box-sizing:border-box}
+.buyerTitle{background:#FFF9C4;padding:10px;border-radius:10px;text-align:center;font-weight:bold;margin-bottom:5px}
 </style>
 </head>
 <body>
@@ -93,13 +94,16 @@ input{width:100%;padding:12px;margin:5px 0;border-radius:10px;border:1px solid #
 <div class="cartBox">
 <h3>🧺 Your Basket</h3>
 <div id="cartList"><p style="color:#888">Basket is empty. Tap ADD TO BASKET!</p></div>
-<input id="custName" placeholder="Your Name">
-<input id="custPhone" placeholder="Your Phone / WhatsApp Number">
-<input id="custAddress" placeholder="Your Address in Maiduguri">
+
+<div class="buyerTitle">✍️ BUYER - Fill Your Details Here</div>
+<input id="custName" placeholder="BUYER Name - Type Your Name">
+<input id="custPhone" placeholder="BUYER Phone Number">
+<input id="custAddress" placeholder="BUYER Address in Maiduguri">
+
 <button class="payBtn" onclick="payWithPi()">💜 CHECKOUT WITH PI</button>
 <button class="waBtn" onclick="orderWhatsApp()">💬 SEND ORDER ON WHATSAPP</button>
 <p id="status" style="text-align:center;color:#6a1b9a;font-weight:bold"></p>
-<p style="text-align:center;color:#555">📍 Location: Maiduguri, Borno State<br>📞 WhatsApp: 09047428383</p>
+<p style="text-align:center;color:#555">📍 Location: Maiduguri, Borno State<br>📞 Seller WhatsApp: 09047428383</p>
 </div>
 
 <script>
@@ -136,9 +140,9 @@ function payWithPi(){
   let name = document.getElementById('custName').value;
   let phone = document.getElementById('custPhone').value;
   let addr = document.getElementById('custAddress').value;
-  if(!name || !phone){ alert("Please enter your Name and Phone first!"); return; }
+  if(!name || !phone){ alert("BUYER: Please enter your Name and Phone first!"); return; }
   document.getElementById('status').innerText = "✅ Order Ready! Total: " + total + " Pi. Please send on WhatsApp below, then pay with Pi Wallet to SDM Market!";
-  alert("Order Ready!\n\n" + cart.map(i=>i.name + " - " + i.price + " Pi").join("\n") + "\n\nTotal: " + total + " Pi\nName: " + name + "\nPhone: " + phone + "\nAddress: " + addr + "\n\nNow tap SEND ORDER ON WHATSAPP!");
+  alert("Order Ready!\n\n" + cart.map(i=>i.name + " - " + i.price + " Pi").join("\n") + "\n\nTotal: " + total + " Pi\nBUYER Name: " + name + "\nBUYER Phone: " + phone + "\nBUYER Address: " + addr + "\n\nNow tap SEND ORDER ON WHATSAPP!");
 }
 function orderWhatsApp(){
   if(cart.length==0){ alert("Basket is empty!"); return; }
@@ -146,7 +150,7 @@ function orderWhatsApp(){
   let name = document.getElementById('custName').value || "Customer";
   let phone = document.getElementById('custPhone').value || "";
   let addr = document.getElementById('custAddress').value || "";
-  let msg = "Hello SDM Pi Market! I want to order:%0A%0A" + cart.map(i=> "- " + i.name + " - " + i.price + " Pi").join("%0A") + "%0A%0ATotal: " + total + " Pi%0AName: " + name + "%0APhone: " + phone + "%0AAddress: " + addr + "%0A%0A I will pay with Pi!";
+  let msg = "Hello SDM Pi Market! I am a BUYER, I want to order:%0A%0A" + cart.map(i=> "- " + i.name + " - " + i.price + " Pi").join("%0A") + "%0A%0ATotal: " + total + " Pi%0ABUYER Name: " + name + "%0ABUYER Phone: " + phone + "%0ABUYER Address: " + addr + "%0A%0A I will pay with Pi!";
   window.open("https://wa.me/2349047428383?text=" + msg, "_blank");
 }
 </script>
