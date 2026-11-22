@@ -5,125 +5,115 @@
 <title>SDM Pi MARKET</title>
 <script src="https://sdk.minepi.com/pi-sdk.js"></script>
 <style>
-body{font-family:Arial;background:#f5f5f5;margin:0;padding:15px}
-h1{text-align:center;color:#6a1b9a}
-.card{background:#fff;padding:15px;border-radius:12px;margin:10px 0;box-shadow:0 2px 8px rgba(0,0,0,0.1)}
-button{width:100%;padding:12px;background:#6a1b9a;color:#fff;border:none;border-radius:8px;font-size:16px;margin-top:8px}
-button.pay{background:#ff9800}
-input{width:95%;padding:10px;margin:5px 0;border:1px solid #ddd;border-radius:8px}
-#user{ text-align:center;font-weight:bold;color:green}
-.product-img{width:100%;border-radius:10px}
+body{font-family:Arial;background:#f5f5f5;margin:0;padding:10px}
+.header{background:#6a1b9a;color:#fff;padding:20px;text-align:center;border-radius:12px}
+.header h1{margin:0}
+.header p{margin:5px 0}
+#user{text-align:center;font-weight:bold;color:green;background:#fff;padding:10px;border-radius:8px;margin:10px 0}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.card{background:#fff;padding:10px;border-radius:12px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,0.1)}
+.card img{width:100%;height:130px;object-fit:cover;border-radius:10px}
+.card h3{margin:8px 0 2px;font-size:15px}
+.card p{margin:2px 0;color:#666;font-size:13px}
+.price{color:#6a1b9a;font-weight:bold;font-size:16px !important}
+button{width:100%;padding:10px;background:#6a1b9a;color:#fff;border:none;border-radius:8px;font-size:14px;margin-top:6px}
+button.pay{background:#ff9800;font-size:16px;padding:13px}
+input{width:95%;padding:11px;margin:6px 0;border:1px solid #ddd;border-radius:8px}
+.checkout{background:#fff;padding:15px;border-radius:12px;margin-top:15px}
+.footer{text-align:center;color:#888;font-size:12px;margin:20px 0}
 </style>
 </head>
 <body>
 
+<div class="header">
 <h1>🛒 SDM Pi MARKET</h1>
+<p>Buy With Pi - Fast Delivery in Jos & Lagos</p>
+</div>
+
 <p id="user">Not Logged In</p>
-<button onclick="loginWithPi()">Login with Pi</button>
+<button onclick="loginWithPi()">🔐 Login with Pi</button>
 
+<div class="grid">
 <div class="card">
-<h2>Product 1 - SDM Rice 5kg</h2>
-<p>Price: 1 Pi</p>
-<p>Fresh Rice - Delivery in Lagos</p>
-<button onclick="selectProduct('SDM Rice 5kg', 1)">Buy This Product</button>
+<img src="https://images.unsplash.com/photo-1586201375761-83865001e31c?w=400">
+<h3>SDM Rice 5kg</h3>
+<p>Premium Local Rice</p>
+<p class="price">1 Pi</p>
+<button onclick="selectProduct('SDM Rice 5kg', 1)">Buy Now</button>
 </div>
 
 <div class="card">
-<h2>Product 2 - SDM Oil 3L</h2>
-<p>Price: 0.5 Pi</p>
+<img src="https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?w=400">
+<h3>SDM Oil 3L</h3>
 <p>Quality Palm Oil</p>
-<button onclick="selectProduct('SDM Oil 3L', 0.5)">Buy This Product</button>
+<p class="price">0.5 Pi</p>
+<button onclick="selectProduct('SDM Oil 3L', 0.5)">Buy Now</button>
 </div>
 
-<div class="card" id="checkout" style="display:none">
-<h2>Buyer Details</h2>
+<div class="card">
+<img src="https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=400">
+<h3>SDM Garri 2kg</h3>
+<p>Clean White Garri</p>
+<p class="price">0.3 Pi</p>
+<button onclick="selectProduct('SDM Garri 2kg', 0.3)">Buy Now</button>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1553530666-ba11a7da3888?w=400">
+<h3>SDM Beans 2kg</h3>
+<p>Fresh Brown Beans</p>
+<p class="price">0.4 Pi</p>
+<button onclick="selectProduct('SDM Beans 2kg', 0.4)">Buy Now</button>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1587049352846-4a222e784d38?w=400">
+<h3>SDM Honey 500ml</h3>
+<p>Original Natural Honey</p>
+<p class="price">0.8 Pi</p>
+<button onclick="selectProduct('SDM Honey 500ml', 0.8)">Buy Now</button>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1588964895597-cfccd6e2dbf9?w=400">
+<h3>SDM Yam 5 Tubers</h3>
+<p>Fresh Farm Yam</p>
+<p class="price">1.2 Pi</p>
+<button onclick="selectProduct('SDM Yam 5 Tubers', 1.2)">Buy Now</button>
+</div>
+</div>
+
+<div class="checkout" id="checkout" style="display:none">
+<h2>📦 Buyer Details</h2>
 <p id="selected">No product selected</p>
-<input id="buyerName" placeholder="Buyer Name - Your Full Name">
+<input id="buyerName" placeholder="Your Full Name">
 <input id="buyerPhone" placeholder="Phone Number - e.g 0803...">
-<input id="buyerAddress" placeholder="Delivery Address - e.g Lagos, Nigeria">
-<button class="pay" onclick="payWithPi()">Pay with Pi</button>
+<input id="buyerAddress" placeholder="Delivery Address - e.g Jos, Plateau">
+<button class="pay" onclick="payWithPi()">Pay with Pi 💜</button>
 <p id="status"></p>
 </div>
 
+<p class="footer">SDM Pi MARKET - Powered by Pi Network<br>WhatsApp: 0803-XXX-XXXX</p>
+
 <script>
-// Pi Init - Testnet / Sandbox = true for testing
 Pi.init({ version: "2.0", sandbox: true });
-
-let currentProduct = "";
-let currentPrice = 0;
-let currentUser = null;
-
-function onIncompletePaymentFound(payment) {
-  console.log("Incomplete payment", payment);
-  // You can complete it here
+let currentProduct=""; let currentPrice=0; let currentUser=null;
+function onIncompletePaymentFound(p){console.log(p)}
+async function loginWithPi(){
+ try{const auth=await Pi.authenticate(['username','payments'], onIncompletePaymentFound); currentUser=auth.user; document.getElementById('user').innerText="Welcome @"+auth.user.username+" ✅ Logged In!"; alert("Welcome "+auth.user.username+"!")}catch(e){alert("Login Failed: "+e)}
 }
-
-async function loginWithPi() {
-  try {
-    document.getElementById('status').innerText = "Logging in... Please Allow in Pi Browser";
-    const auth = await Pi.authenticate(['username', 'payments'], onIncompletePaymentFound);
-    currentUser = auth.user;
-    document.getElementById('user').innerText = "Welcome @" + auth.user.username + " ✅ Logged In!";
-    alert("Welcome " + auth.user.username + "! Login Success!");
-  } catch (err) {
-    alert("Login Failed: " + err);
-    document.getElementById('status').innerText = "Login Failed - Try Again";
-  }
-}
-
-function selectProduct(name, price) {
-  currentProduct = name;
-  currentPrice = price;
-  document.getElementById('checkout').style.display = "block";
-  document.getElementById('selected').innerText = "Selected: " + name + " - " + price + " Pi";
-  window.scrollTo(0, document.body.scrollHeight);
-  alert("You selected " + name + ". Now fill buyer details below!");
-}
-
-async function payWithPi() {
-  if (!currentUser) {
-    alert("Please tap Login with Pi first!");
-    return;
-  }
-  let name = document.getElementById('buyerName').value;
-  let phone = document.getElementById('buyerPhone').value;
-  let address = document.getElementById('buyerAddress').value;
-  if (!name || !phone || !address) {
-    alert("Please fill ALL buyer details first! Name, Phone, Address");
-    return;
-  }
-  if (!currentProduct) {
-    alert("Please select a product first!");
-    return;
-  }
-  try {
-    document.getElementById('status').innerText = "Creating Payment... Please Approve in Pi Wallet";
-    Pi.createPayment({
-      amount: currentPrice,
-      memo: "SDM Pi MARKET - " + currentProduct + " for " + name,
-      metadata: { product: currentProduct, buyer: name, phone: phone, address: address }
-    }, {
-      onReadyForServerApproval: function(paymentId) {
-        console.log("Ready for approval", paymentId);
-        document.getElementById('status').innerText = "Payment Approved by Pi! Waiting...";
-      },
-      onReadyForServerCompletion: function(paymentId, txid) {
-        console.log("Ready for completion", paymentId, txid);
-        document.getElementById('status').innerText = "Payment Successful! Tx: " + txid;
-        alert("Payment Successful! Thank you " + name + "!");
-      },
-      onCancel: function(paymentId) {
-        alert("Payment Cancelled");
-        document.getElementById('status').innerText = "Payment Cancelled";
-      },
-      onError: function(error, payment) {
-        alert("Payment Error: " + error);
-        document.getElementById('status').innerText = "Payment Error: " + error;
-      }
-    });
-  } catch (err) {
-    alert("Pay Error: " + err);
-  }
+function selectProduct(name,price){currentProduct=name;currentPrice=price;document.getElementById('checkout').style.display="block";document.getElementById('selected').innerText="Selected: "+name+" - "+price+" Pi";window.scrollTo(0,document.body.scrollHeight);alert("You selected "+name+"! Fill details below!")}
+async function payWithPi(){
+ if(!currentUser){alert("Tap Login with Pi first!");return}
+ let name=document.getElementById('buyerName').value; let phone=document.getElementById('buyerPhone').value; let address=document.getElementById('buyerAddress').value;
+ if(!name||!phone||!address){alert("Fill ALL details! Name, Phone, Address");return}
+ try{document.getElementById('status').innerText="Creating Payment... Approve in Pi Wallet";
+ Pi.createPayment({amount:currentPrice,memo:"SDM - "+currentProduct+" for "+name,metadata:{product:currentProduct,buyer:name,phone:phone,address:address}},{
+  onReadyForServerApproval:function(id){document.getElementById('status').innerText="Payment Approved! Waiting..."},
+  onReadyForServerCompletion:function(id,txid){document.getElementById('status').innerText="Success! Tx: "+txid;alert("Payment Successful! Thank you "+name+"!")},
+  onCancel:function(id){alert("Payment Cancelled")},
+  onError:function(e){alert("Payment Error: "+e)}
+ })}catch(e){alert("Pay Error: "+e)}
 }
 </script>
 </body>
