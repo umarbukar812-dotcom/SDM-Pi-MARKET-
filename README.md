@@ -1,3 +1,4 @@
+
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -11,7 +12,8 @@ h1{text-align:center;color:#6a1b9a}
 button{width:100%;padding:12px;background:#6a1b9a;color:#fff;border:none;border-radius:8px;font-size:16px;margin-top:8px}
 button.pay{background:#ff9800}
 input{width:95%;padding:10px;margin:5px 0;border:1px solid #ddd;border-radius:8px}
-#user{text-align:center;font-weight:bold;color:green}
+#user{ text-align:center;font-weight:bold;color:green}
+.product-img{width:100%;border-radius:10px}
 </style>
 </head>
 <body>
@@ -45,23 +47,28 @@ input{width:95%;padding:10px;margin:5px 0;border:1px solid #ddd;border-radius:8p
 </div>
 
 <script>
+// Pi Init - Testnet / Sandbox = true for testing
 Pi.init({ version: "2.0", sandbox: true });
+
 let currentProduct = "";
 let currentPrice = 0;
 let currentUser = null;
 
 function onIncompletePaymentFound(payment) {
   console.log("Incomplete payment", payment);
+  // You can complete it here
 }
 
 async function loginWithPi() {
   try {
+    document.getElementById('status').innerText = "Logging in... Please Allow in Pi Browser";
     const auth = await Pi.authenticate(['username', 'payments'], onIncompletePaymentFound);
     currentUser = auth.user;
     document.getElementById('user').innerText = "Welcome @" + auth.user.username + " ✅ Logged In!";
     alert("Welcome " + auth.user.username + "! Login Success!");
   } catch (err) {
     alert("Login Failed: " + err);
+    document.getElementById('status').innerText = "Login Failed - Try Again";
   }
 }
 
@@ -98,9 +105,11 @@ async function payWithPi() {
       metadata: { product: currentProduct, buyer: name, phone: phone, address: address }
     }, {
       onReadyForServerApproval: function(paymentId) {
+        console.log("Ready for approval", paymentId);
         document.getElementById('status').innerText = "Payment Approved by Pi! Waiting...";
       },
       onReadyForServerCompletion: function(paymentId, txid) {
+        console.log("Ready for completion", paymentId, txid);
         document.getElementById('status').innerText = "Payment Successful! Tx: " + txid;
         alert("Payment Successful! Thank you " + name + "!");
       },
