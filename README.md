@@ -6,8 +6,9 @@
 <script src="https://sdk.minepi.com/pi-sdk.js"></script>
 <style>
 body{font-family:Arial;background:#f5f5f5;margin:0;padding:10px}
-.header{background:#6a1b9a;color:#fff;padding:20px;text-align:center;border-radius:12px}
-.header h1{margin:0}
+.header{background:#6a1b9a;color:#fff;padding:20px 10px;text-align:center;border-radius:12px}
+.hexagon{width:90px;height:90px;background:#ff9800;color:#fff;font-size:28px;font-weight:bold;display:flex;align-items:center;justify-content:center;margin:0 auto 10px;clip-path:polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);border:3px solid #fff}
+.header h1{margin:5px 0}
 .header p{margin:5px 0}
 #user{text-align:center;font-weight:bold;color:green;background:#fff;padding:10px;border-radius:8px;margin:10px 0}
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
@@ -21,14 +22,19 @@ button.pay{background:#ff9800;font-size:16px;padding:13px}
 input{width:95%;padding:11px;margin:6px 0;border:1px solid #ddd;border-radius:8px}
 .checkout{background:#fff;padding:15px;border-radius:12px;margin-top:15px}
 .footer{text-align:center;color:#888;font-size:12px;margin:20px 0}
+.location{background:#fff;padding:10px;text-align:center;border-radius:8px;margin:10px 0;font-weight:bold;color:#333}
 </style>
 </head>
 <body>
 
 <div class="header">
+<div class="hexagon">SDM</div>
 <h1>🛒 SDM Pi MARKET</h1>
-<p>Buy With Pi - Fast Delivery in Jos & Lagos</p>
+<p>Buy With Pi - Rice, Sugar, Salt, Oil & Maggi</p>
+<p>📍 Maiduguri, Borno State, Nigeria</p>
 </div>
+
+<div class="location">📍 Location: Maiduguri, Borno State<br>🚚 Fast Delivery in Maiduguri</div>
 
 <p id="user">Not Logged In</p>
 <button onclick="loginWithPi()">🔐 Login with Pi</button>
@@ -43,43 +49,43 @@ input{width:95%;padding:11px;margin:6px 0;border:1px solid #ddd;border-radius:8p
 </div>
 
 <div class="card">
-<img src="https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?w=400">
-<h3>SDM Oil 3L</h3>
-<p>Quality Palm Oil</p>
+<img src="https://images.unsplash.com/photo-1581441363689-1f3c3c414635?w=400">
+<h3>SDM Sugar 2kg</h3>
+<p>Sweet White Sugar</p>
 <p class="price">0.5 Pi</p>
-<button onclick="selectProduct('SDM Oil 3L', 0.5)">Buy Now</button>
+<button onclick="selectProduct('SDM Sugar 2kg', 0.5)">Buy Now</button>
 </div>
 
 <div class="card">
-<img src="https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=400">
-<h3>SDM Garri 2kg</h3>
-<p>Clean White Garri</p>
+<img src="https://images.unsplash.com/photo-1518110925495-5fe2fda0442c?w=400">
+<h3>SDM Salt 1kg</h3>
+<p>Fine Iodized Salt</p>
+<p class="price">0.2 Pi</p>
+<button onclick="selectProduct('SDM Salt 1kg', 0.2)">Buy Now</button>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?w=400">
+<h3>SDM Palm Oil 3L</h3>
+<p>Original Red Palm Oil</p>
+<p class="price">0.6 Pi</p>
+<button onclick="selectProduct('SDM Palm Oil 3L', 0.6)">Buy Now</button>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1620706857370-e1b9770e8bb1?w=400">
+<h3>SDM Groundnut Oil 3L</h3>
+<p>Clean Groundnut Oil</p>
+<p class="price">0.7 Pi</p>
+<button onclick="selectProduct('SDM Groundnut Oil 3L', 0.7)">Buy Now</button>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1585032226651-759b368d7246?w=400">
+<h3>SDM Maggi 1 Pack</h3>
+<p>Maggi Seasoning Cubes</p>
 <p class="price">0.3 Pi</p>
-<button onclick="selectProduct('SDM Garri 2kg', 0.3)">Buy Now</button>
-</div>
-
-<div class="card">
-<img src="https://images.unsplash.com/photo-1553530666-ba11a7da3888?w=400">
-<h3>SDM Beans 2kg</h3>
-<p>Fresh Brown Beans</p>
-<p class="price">0.4 Pi</p>
-<button onclick="selectProduct('SDM Beans 2kg', 0.4)">Buy Now</button>
-</div>
-
-<div class="card">
-<img src="https://images.unsplash.com/photo-1587049352846-4a222e784d38?w=400">
-<h3>SDM Honey 500ml</h3>
-<p>Original Natural Honey</p>
-<p class="price">0.8 Pi</p>
-<button onclick="selectProduct('SDM Honey 500ml', 0.8)">Buy Now</button>
-</div>
-
-<div class="card">
-<img src="https://images.unsplash.com/photo-1588964895597-cfccd6e2dbf9?w=400">
-<h3>SDM Yam 5 Tubers</h3>
-<p>Fresh Farm Yam</p>
-<p class="price">1.2 Pi</p>
-<button onclick="selectProduct('SDM Yam 5 Tubers', 1.2)">Buy Now</button>
+<button onclick="selectProduct('SDM Maggi 1 Pack', 0.3)">Buy Now</button>
 </div>
 </div>
 
@@ -88,12 +94,12 @@ input{width:95%;padding:11px;margin:6px 0;border:1px solid #ddd;border-radius:8p
 <p id="selected">No product selected</p>
 <input id="buyerName" placeholder="Your Full Name">
 <input id="buyerPhone" placeholder="Phone Number - e.g 0803...">
-<input id="buyerAddress" placeholder="Delivery Address - e.g Jos, Plateau">
+<input id="buyerAddress" placeholder="Delivery Address - e.g Maiduguri, Borno">
 <button class="pay" onclick="payWithPi()">Pay with Pi 💜</button>
 <p id="status"></p>
 </div>
 
-<p class="footer">SDM Pi MARKET - Powered by Pi Network<br>WhatsApp: 0803-XXX-XXXX</p>
+<p class="footer">SDM Pi MARKET - Powered by Pi Network<br>📍 Maiduguri, Borno State, Nigeria<br>🚚 Delivery Available in Maiduguri</p>
 
 <script>
 Pi.init({ version: "2.0", sandbox: true });
