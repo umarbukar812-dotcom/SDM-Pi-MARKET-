@@ -10,6 +10,7 @@ body{font-family:Arial;background:#f5f5f5;margin:0;padding:10px}
 .hexagon{width:90px;height:90px;background:#ff9800;color:#fff;font-size:28px;font-weight:bold;display:flex;align-items:center;justify-content:center;margin:0 auto 10px;clip-path:polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);border:3px solid #fff}
 .header h1{margin:5px 0}
 .header p{margin:5px 0}
+.hackathon{background:#ff9800;color:#fff;padding:6px 12px;border-radius:20px;display:inline-block;font-weight:bold;font-size:13px;margin-top:8px}
 #user{text-align:center;font-weight:bold;color:green;background:#fff;padding:10px;border-radius:8px;margin:10px 0}
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .card{background:#fff;padding:10px;border-radius:12px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,0.1)}
@@ -29,6 +30,7 @@ input{width:95%;padding:11px;margin:6px 0;border:1px solid #ddd;border-radius:8p
 
 <div class="header">
 <div class="hexagon">SDM</div>
+<div class="hackathon">🏆 SDM Hackathon 2026</div>
 <h1>🛒 SDM Pi MARKET</h1>
 <p>Buy With Pi - Rice, Sugar, Salt, Oil & Maggi</p>
 <p>📍 Maiduguri, Borno State, Nigeria</p>
@@ -49,7 +51,7 @@ input{width:95%;padding:11px;margin:6px 0;border:1px solid #ddd;border-radius:8p
 </div>
 
 <div class="card">
-<img src="https://images.unsplash.com/photo-1581441363689-1f3c3c414635?w=400">
+<img src="https://mykitchenserenity.com/wp-content/uploads/2026/04/Sugar-1.jpg">
 <h3>SDM Sugar 2kg</h3>
 <p>Sweet White Sugar</p>
 <p class="price">0.5 Pi</p>
@@ -73,7 +75,7 @@ input{width:95%;padding:11px;margin:6px 0;border:1px solid #ddd;border-radius:8p
 </div>
 
 <div class="card">
-<img src="https://images.unsplash.com/photo-1620706857370-e1b9770e8bb1?w=400">
+<img src="https://img3.exportersindia.com/product_images/bc-full/2024/9/13169578/pure-gold-groundnut-oil-superior-quality-and-1726528424-7605343.jpeg">
 <h3>SDM Groundnut Oil 3L</h3>
 <p>Clean Groundnut Oil</p>
 <p class="price">0.7 Pi</p>
@@ -81,7 +83,7 @@ input{width:95%;padding:11px;margin:6px 0;border:1px solid #ddd;border-radius:8p
 </div>
 
 <div class="card">
-<img src="https://images.unsplash.com/photo-1585032226651-759b368d7246?w=400">
+<img src="https://africart.ca/wp-content/uploads/2021/08/Maggi-Bouillon-Cubes-600x599.jpg">
 <h3>SDM Maggi 1 Pack</h3>
 <p>Maggi Seasoning Cubes</p>
 <p class="price">0.3 Pi</p>
@@ -99,7 +101,7 @@ input{width:95%;padding:11px;margin:6px 0;border:1px solid #ddd;border-radius:8p
 <p id="status"></p>
 </div>
 
-<p class="footer">SDM Pi MARKET - Powered by Pi Network<br>📍 Maiduguri, Borno State, Nigeria<br>🚚 Delivery Available in Maiduguri</p>
+<p class="footer">SDM Pi MARKET - Powered by Pi Network<br>🏆 SDM Hackathon 2026<br>📍 Maiduguri, Borno State, Nigeria<br>🚚 Delivery Available in Maiduguri</p>
 
 <script>
 Pi.init({ version: "2.0", sandbox: true });
