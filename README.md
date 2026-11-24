@@ -108,7 +108,7 @@ input{width:95%;padding:11px;margin:6px 0;border:1px solid #ddd;border-radius:8p
 <p class="footer">SDM Pi MARKET - Powered by Pi Network<br>🏆 SDM Hackathon 2026<br>📍 Maiduguri, Borno State, Nigeria<br>🚚 Delivery Available in Maiduguri</p>
 
 <script>
-let currentProduct=""; let currentPrice=0; let currentUser=null;
+let currentProduct=""; let currentPrice=0; let currentUser=null; let isGuest=false;
 function onIncompletePaymentFound(p){console.log(p)}
 window.onload = function(){
   var d = document.getElementById('debug');
@@ -116,11 +116,12 @@ window.onload = function(){
     d.innerHTML = "⚠️ Pi SDK NOT loaded! You are NOT in Pi Browser. Open this shop in <b>Pi Browser</b> app. Tap Guest button to continue.";
     d.style.background = "#ffcccc";
   } else {
-    try{ Pi.init({ version: "2.0", sandbox: true }); d.innerHTML = "✅ Pi SDK Loaded! You are in Pi Browser. Tap Login with Pi!"; d.style.background = "#ccffcc"; } catch(e){ d.innerHTML = "Pi Init Error: " + e; }
+    try{ Pi.init({ version: "2.0", sandbox: true }); d.innerHTML = "✅ Pi SDK Loaded! You are in Pi Browser. Tap Login with Pi or Guest!"; d.style.background = "#ccffcc"; } catch(e){ d.innerHTML = "Pi Init Error: " + e; }
   }
 };
 function guestLogin(){
   currentUser = {username: "Guest"};
+  isGuest = true;
   document.getElementById('user').innerText = "Welcome Guest ✅ You can buy now!";
   alert("Welcome Guest! You can buy now without Pi Login!");
 }
@@ -133,10 +134,11 @@ async function loginWithPi(){
   try{
     const auth = await Pi.authenticate(['username','payments'], onIncompletePaymentFound);
     currentUser = auth.user;
+    isGuest = false;
     document.getElementById('user').innerText = "Welcome @" + auth.user.username + " ✅ Logged In!";
     alert("Welcome " + auth.user.username + "!");
   }catch(e){
-    alert("Login Failed: " + JSON.stringify(e));
+    alert("Login Failed: " + JSON.stringify(e) + " - Tap Guest to continue!");
   }
 }
 function selectProduct(name,price){currentProduct=name;currentPrice=price;document.getElementById('checkout').style.display="block";document.getElementById('selected').innerText="Selected: "+name+" - "+price+" Pi";window.scrollTo(0,document.body.scrollHeight);alert("You selected "+name+"! Fill details below!")}
@@ -144,9 +146,10 @@ async function payWithPi(){
  if(!currentUser){alert("Tap Login with Pi OR Guest first!");return}
  let name=document.getElementById('buyerName').value; let phone=document.getElementById('buyerPhone').value; let address=document.getElementById('buyerAddress').value;
  if(!name||!phone||!address){alert("Fill ALL details! Name, Phone, Address");return}
- if(typeof Pi === 'undefined'){
-   alert("Pi Payment needs Pi Browser! Your order saved: " + currentProduct + " for " + name + ". We will contact you on " + phone);
-   document.getElementById('status').innerText = "Order Saved for " + name + "! We will call you on " + phone;
+ // FIX: Guest = NO Pi Payment, just save order!
+ if(isGuest){
+   document.getElementById('status').innerText = "✅ Order Saved! " + currentProduct + " for " + name + ". We will call you on " + phone + " for delivery in Maiduguri!";
+   alert("✅ ORDER SUCCESS!\\n\\nProduct: " + currentProduct + "\\nPrice: " + currentPrice + " Pi\\nName: " + name + "\\nPhone: " + phone + "\\nAddress: " + address + "\\n\\nWe will call you for delivery! Thank you!");
    return;
  }
  try{document.getElementById('status').innerText="Creating Payment... Approve in Pi Wallet";
@@ -160,3 +163,4 @@ async function payWithPi(){
 </script>
 </body>
 </html>
+
