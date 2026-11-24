@@ -20,10 +20,12 @@ body{font-family:Arial;background:#f5f5f5;margin:0;padding:10px}
 .price{color:#6a1b9a;font-weight:bold;font-size:16px !important}
 button{width:100%;padding:10px;background:#6a1b9a;color:#fff;border:none;border-radius:8px;font-size:14px;margin-top:6px}
 button.pay{background:#ff9800;font-size:16px;padding:13px}
+button.guest{background:#2196F3}
 input{width:95%;padding:11px;margin:6px 0;border:1px solid #ddd;border-radius:8px}
 .checkout{background:#fff;padding:15px;border-radius:12px;margin-top:15px}
 .footer{text-align:center;color:#888;font-size:12px;margin:20px 0}
 .location{background:#fff;padding:10px;text-align:center;border-radius:8px;margin:10px 0;font-weight:bold;color:#333}
+.debug{background:#fff3cd;padding:10px;border-radius:8px;margin:10px 0;text-align:center;font-size:13px}
 </style>
 </head>
 <body>
@@ -40,6 +42,8 @@ input{width:95%;padding:11px;margin:6px 0;border:1px solid #ddd;border-radius:8p
 
 <p id="user">Not Logged In</p>
 <button onclick="loginWithPi()">🔐 Login with Pi</button>
+<button class="guest" onclick="guestLogin()">👤 Continue as Guest - No Login Needed</button>
+<div class="debug" id="debug">Checking Pi SDK... Please wait</div>
 
 <div class="grid">
 <div class="card">
@@ -104,17 +108,47 @@ input{width:95%;padding:11px;margin:6px 0;border:1px solid #ddd;border-radius:8p
 <p class="footer">SDM Pi MARKET - Powered by Pi Network<br>🏆 SDM Hackathon 2026<br>📍 Maiduguri, Borno State, Nigeria<br>🚚 Delivery Available in Maiduguri</p>
 
 <script>
-Pi.init({ version: "2.0", sandbox: true });
 let currentProduct=""; let currentPrice=0; let currentUser=null;
 function onIncompletePaymentFound(p){console.log(p)}
+window.onload = function(){
+  var d = document.getElementById('debug');
+  if(typeof Pi === 'undefined'){
+    d.innerHTML = "⚠️ Pi SDK NOT loaded! You are NOT in Pi Browser. Open this shop in <b>Pi Browser</b> app. Tap Guest button to continue.";
+    d.style.background = "#ffcccc";
+  } else {
+    try{ Pi.init({ version: "2.0", sandbox: true }); d.innerHTML = "✅ Pi SDK Loaded! You are in Pi Browser. Tap Login with Pi!"; d.style.background = "#ccffcc"; } catch(e){ d.innerHTML = "Pi Init Error: " + e; }
+  }
+};
+function guestLogin(){
+  currentUser = {username: "Guest"};
+  document.getElementById('user').innerText = "Welcome Guest ✅ You can buy now!";
+  alert("Welcome Guest! You can buy now without Pi Login!");
+}
 async function loginWithPi(){
- try{const auth=await Pi.authenticate(['username','payments'], onIncompletePaymentFound); currentUser=auth.user; document.getElementById('user').innerText="Welcome @"+auth.user.username+" ✅ Logged In!"; alert("Welcome "+auth.user.username+"!")}catch(e){alert("Login Failed: "+e)}
+  alert("Login button tapped! Checking Pi...");
+  if(typeof Pi === 'undefined'){
+    alert("Pi NOT found! You are NOT in Pi Browser! Open Pi Browser app, type your shop link there, then try again. Or tap Guest button.");
+    return;
+  }
+  try{
+    const auth = await Pi.authenticate(['username','payments'], onIncompletePaymentFound);
+    currentUser = auth.user;
+    document.getElementById('user').innerText = "Welcome @" + auth.user.username + " ✅ Logged In!";
+    alert("Welcome " + auth.user.username + "!");
+  }catch(e){
+    alert("Login Failed: " + JSON.stringify(e));
+  }
 }
 function selectProduct(name,price){currentProduct=name;currentPrice=price;document.getElementById('checkout').style.display="block";document.getElementById('selected').innerText="Selected: "+name+" - "+price+" Pi";window.scrollTo(0,document.body.scrollHeight);alert("You selected "+name+"! Fill details below!")}
 async function payWithPi(){
- if(!currentUser){alert("Tap Login with Pi first!");return}
+ if(!currentUser){alert("Tap Login with Pi OR Guest first!");return}
  let name=document.getElementById('buyerName').value; let phone=document.getElementById('buyerPhone').value; let address=document.getElementById('buyerAddress').value;
  if(!name||!phone||!address){alert("Fill ALL details! Name, Phone, Address");return}
+ if(typeof Pi === 'undefined'){
+   alert("Pi Payment needs Pi Browser! Your order saved: " + currentProduct + " for " + name + ". We will contact you on " + phone);
+   document.getElementById('status').innerText = "Order Saved for " + name + "! We will call you on " + phone;
+   return;
+ }
  try{document.getElementById('status').innerText="Creating Payment... Approve in Pi Wallet";
  Pi.createPayment({amount:currentPrice,memo:"SDM - "+currentProduct+" for "+name,metadata:{product:currentProduct,buyer:name,phone:phone,address:address}},{
   onReadyForServerApproval:function(id){document.getElementById('status').innerText="Payment Approved! Waiting..."},
